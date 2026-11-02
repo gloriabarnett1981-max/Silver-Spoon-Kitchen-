@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Silver Spoon Kitchen — Simple Recipes for Older Home Cooks</title>
+<meta name="description" content="Silver Spoon Kitchen is a recipe blog for older home cooks and the families who cook for them. Tested recipes in plain language, sized for one or two people, with large print and full nutrition information.">
+<link rel="canonical" href="https://www.yourdomain.com/">
+
+<!-- SOCIAL PREVIEW -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Silver Spoon Kitchen — Simple Recipes for Older Home Cooks">
+<meta property="og:description" content="Tested recipes written in plain language, sized for one or two people, with large print and full nutrition information.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=1200&q=80">
+<meta property="og:url" content="https://www.yourdomain.com/">
+
+<style>
+  /* ---------- BASE ---------- */
+  :root{
+    --cream:#fdf8f1;
+    --white:#ffffff;
+    --ink:#25211d;
+    --ink-soft:#544c44;
+    --green:#2f5d43;
+    --green-dark:#22452f;
+    --terracotta:#a8492b;
+    --gold:#a9761f;
+    --line:#e7dccb;
+    --focus:#0b5fff;
+    --radius:14px;
+    --max:1140px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+
+  html{
+    font-size:112.5%; /* 18px base — easier reading for older visitors */
+    scroll-behavior:smooth;
+  }
+
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:1.0625rem;   /* 19px body text */
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,h4{
+    font-family:Georgia,"Times New Roman",serif;
+    line-height:1.25;
+    color:var(--ink);
+    margin:0 0 .5em;
+    letter-spacing:-0.01em;
+  }
+  h1{font-size:clamp(2.1rem,5vw,3.1rem);}
+  h2{font-size:clamp(1.6rem,3.4vw,2.2rem);}
+  h3{font-size:1.28rem;}
+  p{margin:0 0 1.1em;}
+  a{color:var(--green-dark);text-underline-offset:3px;}
+  a:hover{color:var(--terracotta);}
+
+  img{max-width:100%;height:auto;display:block;}
+
+  /* Visible keyboard focus everywhere */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  summary:focus-visible{
+    outline:3px solid var(--focus);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  .wrap{
+    width:100%;
+    max-width:var(--max);
+    margin-inline:auto;
+    padding-inline:clamp(1rem,4vw,2rem);
+  }
+
+  /* Skip link for screen readers / keyboard users */
+  .skip-link{
+    position:absolute;left:-9999px;top:0;
+    background:var(--green-dark);color:#fff;
+    padding:.85rem 1.4rem;z-index:9999;
+    font-weight:700;text-decoration:none;border-radius:0 0 10px 0;
+  }
+  .skip-link:focus{left:0;color:#fff;}
+
+  /* ---------- HEADER ---------- */
+  .site-header{
+    background:var(--white);
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:100;
+  }
+  .header-inner{
+    display:flex;flex-wrap:wrap;align-items:center;
+    justify-content:space-between;gap:.6rem 1.5rem;
+    padding-block:.9rem;
+  }
+  .logo{
+    display:flex;align-items:center;gap:.6rem;
+    text-decoration:none;color:var(--ink);
+    font-family:Georgia,serif;font-weight:700;
+    font-size:1.3rem;line-height:1.15;
+  }
+  .logo svg{flex:none;}
+  .logo small{
+    display:block;font-family:inherit;
+    font-size:.68rem;font-weight:400;
+    letter-spacing:.06em;text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  .site-nav ul{
+    list-style:none;margin:0;padding:0;
+    display:flex;flex-wrap:wrap;gap:.25rem 1.4rem;
+  }
+  .site-nav a{
+    display:inline-block;
+    padding:.7rem .25rem;      /* large tap target */
+    font-weight:600;
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:3px solid transparent;
+  }
+  .site-nav a:hover,
+  .site-nav a[aria-current="page"]{
+    color:var(--green-dark);
+    border-bottom-color:var(--terracotta);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--white);
+    border-bottom:1px solid var(--line);
+    padding-block:clamp(2rem,5vw,3.5rem);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:clamp(1.5rem,4vw,3.5rem);
+    align-items:center;
+  }
+  .hero p.lede{
+    font-size:1.15rem;
+    color:var(--ink-soft);
+    max-width:36em;
+  }
+  .eyebrow{
+    display:inline-block;
+    font-size:.78rem;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;
+    color:var(--terracotta);
+    margin-bottom:.8rem;
+  }
+  .btn-row{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.6rem;}
+  .btn{
+    display:inline-block;
+    padding:1rem 1.7rem;
+    border-radius:999px;
+    font-weight:700;
+    font-size:1.02rem;
+    text-decoration:none;
+    border:2px solid transparent;
+    transition:background-color .15s ease,color .15s ease;
+  }
+  .btn-primary{background:var(--green);color:#fff;}
+  .btn-primary:hover{background:var(--green-dark);color:#fff;}
+  .btn-secondary{background:var(--white);color:var(--green-dark);border-color:var(--green);}
+  .btn-secondary:hover{background:#eef3ef;color:var(--green-dark);}
+
+  .hero-figure{margin:0;}
+  .hero-figure img{
+    width:100%;aspect-ratio:4/3;object-fit:cover;
+    border-radius:var(--radius);
+    box-shadow:0 10px 30px rgba(37,33,29,.13);
+  }
+  .hero-figure figcaption{
+    font-size:.85rem;color:var(--ink-soft);
+    margin-top:.6rem;text-align:right;
+  }
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust{
+    background:var(--green-dark);
+    color:#f4efe6;
+    padding-block:1.5rem;
+  }
+  .trust ul{
+    list-style:none;margin:0;padding:0;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:.9rem 1.8rem;
+    font-size:1rem;
+  }
+  .trust li{display:flex;gap:.6rem;align-items:flex-start;line-height:1.45;}
+  .trust svg{flex:none;margin-top:.25rem;}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding-block:clamp(2.5rem,6vw,4.5rem);}
+  .section-head{max-width:46em;margin-bottom:2.2rem;}
+  .section-head p{color:var(--ink-soft);margin-bottom:0;}
+
+  /* ---------- RECIPE CARDS ---------- */
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(285px,1fr));
+    gap:1.8rem;
+  }
+  .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:box-shadow .18s ease,transform .18s ease;
+  }
+  .card:hover{
+    box-shadow:0 14px 34px rgba(37,33,29,.11);
+    transform:translateY(-3px);
+  }
+  .card img{
+    width:100%;aspect-ratio:16/10;object-fit:cover;
+  }
+  .card-body{padding:1.4rem 1.5rem 1.6rem;display:flex;flex-direction:column;flex:1;}
+  .card-body h3{margin-bottom:.5rem;}
+  .card-body h3 a{text-decoration:none;color:var(--ink);}
+  .card-body h3 a:hover{color:var(--terracotta);text-decoration:underline;}
+  .card-body p{color:var(--ink-soft);font-size:1rem;margin-bottom:1rem;}
+  .card-meta{
+    margin-top:auto;
+    font-size:.9rem;
+    color:var(--ink-soft);
+    display:flex;flex-wrap:wrap;gap:.4rem .9rem;
+    padding-top:.9rem;
+    border-top:1px solid var(--line);
+  }
+  .tag{
+    display:inline-block;
+    background:#f1ece1;
+    color:var(--green-dark);
+    font-size:.78rem;font-weight:700;
+    letter-spacing:.05em;text-transform:uppercase;
+    padding:.28rem .7rem;border-radius:999px;
+    margin-bottom:.8rem;
+  }
+
+  /* ---------- SIMPLE LIST ---------- */
+  .simple-list{
+    list-style:none;margin:0;padding:0;
+    display:grid;gap:.9rem;
+  }
+  .simple-list li{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:1.1rem 1.3rem;
+    display:flex;flex-wrap:wrap;justify-content:space-between;
+    align-items:center;gap:.4rem 1.2rem;
+  }
+  .simple-list a{
+    font-weight:700;font-size:1.08rem;
+    text-decoration:none;color:var(--ink);
+  }
+  .simple-list a:hover{color:var(--terracotta);text-decoration:underline;}
+  .simple-list span{font-size:.92rem;color:var(--ink-soft);}
+
+  /* ---------- AD SLOT ---------- */
+  .ad-slot{
+    margin-block:1rem;
+    text-align:center;
+  }
+  .ad-label{
+    font-size:.72rem;letter-spacing:.14em;
+    text-transform:uppercase;color:#8a8074;
+    margin:0 0 .4rem;
+  }
+  .ad-inner{
+    min-height:250px;
+    background:#f4eee4;
+    border:1px dashed #d8cbb6;
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    color:#8a8074;font-size:.9rem;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    background:var(--white);
+    border-block:1px solid var(--line);
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    gap:clamp(1.5rem,4vw,3.5rem);
+    align-items:center;
+  }
+  .about-grid img{
+    width:100%;aspect-ratio:4/5;object-fit:cover;
+    border-radius:var(--radius);
+  }
+  .about h2{margin-bottom:1rem;}
+  .about p{color:var(--ink-soft);}
+  .about p:last-of-type{margin-bottom:0;}
+
+  /* ---------- NEWSLETTER ---------- */
+  .newsletter{
+    background:var(--green-dark);
+    color:#f6f1e7;
+  }
+  .newsletter h2{color:#fff;}
+  .newsletter p{color:#ded6c7;max-width:44em;}
+  .newsletter form{
+    display:flex;flex-wrap:wrap;gap:.8rem;
+    margin-top:1.6rem;max-width:620px;
+  }
+  .newsletter label{
+    display:block;width:100%;
+    font-weight:700;font-size:.95rem;color:#fff;
+    margin-bottom:-.3rem;
+  }
+  .newsletter input[type="email"]{
+    flex:1 1 260px;
+    padding:1rem 1.2rem;
+    font-size:1.02rem;
+    border:2px solid #4a7a5f;
+    border-radius:10px;
+    background:#fff;color:var(--ink);
+  }
+  .newsletter input[type="email"]::placeholder{color:#8a8074;}
+  .newsletter button{
+    flex:0 0 auto;
+    padding:1rem 1.9rem;
+    font-size:1.02rem;font-weight:700;
+    border:none;border-radius:10px;
+    background:var(--terracotta);color:#fff;
+    cursor:pointer;
+  }
+  .newsletter button:hover{background:#8d3b22;}
+  .newsletter .fine{
+    font-size:.85rem;color:#bdb2a0;
+    margin-top:1rem;margin-bottom:0;
+  }
+
+  /* ---------- FOOTER ---------- */
+  .site-footer{
+    background:#1d2b22;
+    color:#c9c2b5;
+    padding-block:3rem 2rem;
+    font-size:.95rem;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:2rem 2.5rem;
+    margin-bottom:2.5rem;
+  }
+  .site-footer h3{
+    color:#fff;font-size:1rem;
+    font-family:inherit;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;
+    margin-bottom:.9rem;
+  }
+  .site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;}
+  .site-footer a{color:#c9c2b5;text-decoration:none;}
+  .site-footer a:hover{color:#fff;text-decoration:underline;}
+  .footer-brand p{color:#a8a196;margin-bottom:.9rem;max-width:30em;}
+  .footer-legal{
+    border-top:1px solid #33463a;
+    padding-top:1.6rem;
+    display:flex;flex-wrap:wrap;
+    justify-content:space-between;gap:.8rem 1.5rem;
+    font-size:.88rem;color:#8e8779;
+  }
+
+  /* ---------- COOKIE BANNER ---------- */
+  .cookie-banner{
+    position:fixed;left:0;right:0;bottom:0;z-index:500;
+    background:#1d2b22;
+    color:#f2ece0;
+    padding:1.2rem clamp(1rem,4vw,2rem);
+    box-shadow:0 -6px 24px rgba(0,0,0,.22);
+    display:none;
+  }
+  .cookie-banner.is-visible{display:block;}
+  .cookie-inner{
+    max-width:var(--max);margin-inline:auto;
+    display:flex;flex-wrap:wrap;
+    align-items:center;justify-content:space-between;
+    gap:1rem 2rem;
+  }
+  .cookie-inner p{margin:0;font-size:.95rem;max-width:62ch;color:#ded6c7;}
+  .cookie-inner a{color:#fff;}
+  .cookie-actions{display:flex;flex-wrap:wrap;gap:.7rem;}
+  .cookie-actions button{
+    padding:.75rem 1.4rem;
+    font-size:.95rem;font-weight:700;
+    border-radius:8px;border:2px solid transparent;
+    cursor:pointer;
+  }
+  .cookie-accept{background:#5a9b73;color:#10231a;}
+  .cookie-accept:hover{background:#6fb389;}
+  .cookie-decline{background:transparent;color:#f2ece0;border-color:#5d6b60;}
+  .cookie-decline:hover{background:#2a3b30;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .hero-grid,
+    .about-grid{grid-template-columns:1fr;}
+    .about-grid img{aspect-ratio:16/10;order:-1;}
+    .header-inner{justify-content:center;text-align:center;}
+    .site-nav ul{justify-content:center;gap:.15rem 1rem;}
+    .site-nav a{font-size:.95rem;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{
+      animation-duration:.01ms !important;
+      transition-duration:.01ms !important;
+    }
+  }
+</style>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="/" aria-label="Silver Spoon Kitchen — home">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 20c0-6 3.5-9 8-9s8 3 8 9" stroke="#2f5d43" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M12 11V4" stroke="#a8492b" stroke-width="1.8" stroke-linecap="round"/>
+        <ellipse cx="12" cy="3.2" rx="2.4" ry="1.4" fill="#a8492b"/>
+      </svg>
+      <span>
+        Silver Spoon Kitchen
+        <small>Recipes for real life</small>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="/" aria-current="page">Home</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/cooking-basics/">Cooking Basics</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">For home cooks 60 and better</span>
+        <h1 id="hero-title">Comfort food made simple, for the way you cook now</h1>
+        <p class="lede">
+          Silver Spoon Kitchen is a recipe blog for older home cooks and the families who cook for them.
+          Every recipe is tested in a home kitchen, written in plain language, and portioned for one or two
+          people — with larger print, short steps, and full nutrition information on every page.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="/recipes/">Browse all recipes</a>
+          <a class="btn btn-secondary" href="/recipes/lemon-herb-baked-cod-for-two/">Start with an easy one</a>
+        </div>
+      </div>
+
+      <figure class="hero-figure">
+        <img
+          src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=1000&q=80"
+          alt="A home cook in an apron stirring a pot at a kitchen counter"
+          width="1000" height="750" fetchpriority="high" decoding="async">
+        <figcaption>Tested in a home kitchen, not a test lab.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ TRUST STRIP ============ -->
+  <div class="trust">
+    <div class="wrap">
+      <ul>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke="#8fd0a8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Every recipe tested in a real kitchen
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke="#8fd0a8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Large-print, step-by-step instructions
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke="#8fd0a8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Portions sized for one or two
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke="#8fd0a8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Full nutrition info on every recipe
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ FEATURED RECIPES ============ -->
+  <section aria-labelledby="featured-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="featured-title">This week's recipes</h2>
+        <p>Three dishes our readers are cooking right now. Each one takes under an hour, uses ordinary grocery-store ingredients, and reheats well the next day.</p>
+      </div>
+
+      <div class="card-grid">
+
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+            alt="A bowl of beef and barley soup with carrots and celery"
+            width="800" height="500" loading="lazy" decoding="async">
+          <div class="card-body">
+            <span class="tag">Soups &amp; Stews</span>
+            <h3><a href="/recipes/beef-and-barley-soup/">Old-Fashioned Beef and Barley Soup</a></h3>
+            <p>A bowl of this soup carries about 26 grams of protein, and the barley and carrots soften the longer it simmers — helpful if chewier meats have become difficult. It freezes beautifully in single portions.</p>
+            <p class="card-meta"><span>20 min prep</span><span>50 min cook</span><span>6 servings</span></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80"
+            alt="Baked white fish fillets on a sheet pan with lemon slices and parsley"
+            width="800" height="500" loading="lazy" decoding="async">
+          <div class="card-body">
+            <span class="tag">Mains for Two</span>
+            <h3><a href="/recipes/lemon-herb-baked-cod-for-two/">Lemon-Herb Baked Cod for Two</a></h3>
+            <p>Cod is one of the easiest fish to cook at home. It flakes apart when it is done and needs only 12 to 14 minutes in the oven. This version uses lemon, parsley, and olive oil — no added salt required.</p>
+            <p class="card-meta"><span>10 min prep</span><span>14 min cook</span><span>2 servings</span></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=800&q=80"
+            alt="Two glass jars of overnight oats topped with apple slices and cinnamon"
+            width="800" height="500" loading="lazy" decoding="async">
+          <div class="card-body">
+            <span class="tag">Breakfast</span>
+            <h3><a href="/recipes/overnight-apple-cinnamon-oats/">Overnight Apple-Cinnamon Oats</a></h3>
+            <p>No stove, no standing at the counter. Mix it in a jar before bed and breakfast is ready when you are. Each jar gives you about 15 grams of protein and 5 grams of fiber to start the morning.</p>
+            <p class="card-meta"><span>10 min prep</span><span>Chill overnight</span><span>2 servings</span></p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AD SLOT 1 ============ -->
+  <div class="wrap">
+    <aside class="ad-slot" aria-label="Advertisement">
+      <p class="ad-label">Advertisement</p>
+      <div class="ad-inner" id="ad-slot-1">
+        <!-- PASTE YOUR GOOGLE ADSENSE <ins> UNIT INSIDE THIS DIV -->
+      </div>
+    </aside>
+  </div>
+
+  <!-- ============ MORE RECIPES ============ -->
+  <section aria-labelledby="more-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="more-title">More from the kitchen</h2>
+        <p>Quick, low-effort recipes for the days when standing at the stove is the last thing you want to do.</p>
+      </div>
+
+      <ul class="simple-list">
+        <li>
+          <a href="/recipes/soft-scrambled-eggs-with-spinach/">Soft Scrambled Eggs with Spinach</a>
+          <span>8 minutes · 1 serving · 19 g protein</span>
+        </li>
+        <li>
+          <a href="/recipes/one-pan-chicken-and-sweet-potato/">One-Pan Chicken Thighs with Sweet Potato</a>
+          <span>45 minutes · 2 servings · one pan to wash</span>
+        </li>
+        <li>
+          <a href="/recipes/no-bake-peanut-butter-oat-bites/">No-Bake Peanut Butter Oat Bites</a>
+          <span>15 minutes · makes 12 · no oven needed</span>
+        </li>
+        <li>
+          <a href="/recipes/creamy-white-bean-and-kale-soup/">Creamy White Bean and Kale Soup</a>
+          <span>30 minutes · 4 servings · freezes well</span>
+        </li>
+        <li>
+          <a href="/recipes/baked-apples-with-cinnamon/">Baked Apples with Cinnamon</a>
+          <span>40 minutes · 2 servings · 4 ingredients</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ COOKING BASICS ============ -->
+  <section aria-labelledby="basics-title" style="background:#f6f0e6;border-block:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="basics-title">Cooking basics</h2>
+        <p>Practical guides for the questions we get asked most often — from shopping for one person to making dinner easier on your hands.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-body">
+            <span class="tag">Shopping</span>
+            <h3><a href="/cooking-basics/cooking-for-one-or-two/">How to cook for one or two without throwing food away</a></h3>
+            <p>Which ingredients freeze well, which ones don't, and how to buy a week of groceries that actually gets used.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <span class="tag">Health</span>
+            <h3><a href="/cooking-basics/salt-swaps-that-taste-good/">Salt swaps that actually taste good</a></h3>
+            <p>If you are watching sodium, these are the seasonings that add real flavor — tested side by side in the same soup.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <span class="tag">Kitchen Skills</span>
+            <h3><a href="/cooking-basics/easier-dinner-on-your-hands/">Making dinner easier on your hands</a></h3>
+            <p>Gadgets, grips, and small changes that help with arthritis or a weak grip — without buying a whole new kitchen.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" aria-labelledby="about-title">
+    <div class="wrap about-grid">
+      <img
+        src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=700&q=80"
+        alt="A cook's hands preparing vegetables on a wooden cutting board"
+        width="700" height="875" loading="lazy" decoding="async">
+
+      <div>
+        <h2 id="about-title">Why this kitchen exists</h2>
+        <p>
+          I started Silver Spoon Kitchen after spending a year cooking for my mother, who had cooked for
+          forty years and suddenly found that the recipes she knew by heart no longer fit her hands, her
+          appetite, or her kitchen. The recipes she found online were written for families of four, buried
+          under three paragraphs of backstory, and printed in a typeface she had to squint at.
+        </p>
+        <p>
+          So this site is different by design. Every recipe is cut down to one or two servings. Steps are
+          short and numbered. Measurements are given in cups and ounces, not just grams. And every recipe
+          lists the protein, fiber, sodium, and calories per serving, because those numbers matter more
+          after 60 than they did at 30.
+        </p>
+        <p>
+          Nothing here is published until it has been cooked at least twice in a home kitchen and eaten by
+          someone who will say honestly if it is any good.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AD SLOT 2 ============ -->
+  <div class="wrap">
+    <aside class="ad-slot" aria-label="Advertisement">
+      <p class="ad-label">Advertisement</p>
+      <div class="ad-inner" id="ad-slot-2">
+        <!-- PASTE YOUR SECOND GOOGLE ADSENSE <ins> UNIT INSIDE THIS DIV -->
+      </div>
+    </aside>
+  </div>
+
+  <!-- ============ NEWSLETTER ============ -->
+  <section class="newsletter" aria-labelledby="news-title">
+    <div class="wrap">
+      <h2 id="news-title">One new recipe in your inbox each week</h2>
+      <p>
+        Every Tuesday morning we send a single recipe, a shopping list you can print, and one short tip
+        from the Cooking Basics section. No pop-ups, no daily emails, and you can unsubscribe with one click.
+      </p>
+
+      <!-- IMPORTANT: replace the action URL with your email provider's form endpoint -->
+      <form action="https://your-email-provider.com/subscribe" method="post" novalidate>
+        <label for="newsletter-email">Your email address</label>
+        <input
+          type="email"
+          id="newsletter-email"
+          name="email"
+          placeholder="name@example.com"
+          autocomplete="email"
+          required>
+        <button type="submit">Subscribe</button>
+      </form>
+
+      <p class="fine">
+        We never sell or share your email address. Read our
+        <a href="/privacy-policy/" style="color:#fff;">Privacy Policy</a>.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <h3>Silver Spoon Kitchen</h3>
+        <p>Tested recipes for older home cooks and the people who cook for them. Simple food, plain language, honest numbers.</p>
+      </div>
+
+      <div>
+        <h3>Recipes</h3>
+        <ul>
+          <li><a href="/recipes/breakfast/">Breakfast</a></li>
+          <li><a href="/recipes/soups-and-stews/">Soups &amp; Stews</a></li>
+          <li><a href="/recipes/mains-for-two/">Mains for Two</a></li>
+          <li><a href="/recipes/side-dishes/">Side Dishes</a></li>
+          <li><a href="/recipes/desserts/">Desserts</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>About</h3>
+        <ul>
+          <li><a href="/about/">Our story</a></li>
+          <li><a href="/cooking-basics/">Cooking basics</a></li>
+          <li><a href="/contact/">Contact us</a></li>
+          <li><a href="/editorial-policy/">Editorial policy</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/cookie-policy/">Cookie Policy</a></li>
+          <li><a href="/terms-of-use/">Terms of Use</a></li>
+          <li><a href="/accessibility-statement/">Accessibility Statement</a></li>
+          <li><a href="/disclaimer/">Health &amp; Nutrition Disclaimer</a></li>
+          <li><a href="/advertising-disclosure/">Advertising &amp; Affiliate Disclosure</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-legal">
+      <span>&copy; <span id="year">2025</span> Silver Spoon Kitchen. All rights reserved.</span>
+      <span>Made in the United States.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ COOKIE BANNER ============ -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-labelledby="cookieTitle" aria-describedby="cookieText">
+  <div class="cookie-inner">
+    <p id="cookieText">
+      <strong id="cookieTitle">We use cookies.</strong>
+      We use essential cookies to run this site and optional cookies — including from Google — to measure
+      traffic and show ads. You can accept or decline the optional ones.
+      <a href="/cookie-policy/">Read our Cookie Policy</a>.
+    </p>
+    <div class="cookie-actions">
+      <button type="button" class="cookie-accept" id="cookieAccept">Accept all</button>
+      <button type="button" class="cookie-decline" id="cookieDecline">Decline optional</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ---------- Auto year in footer ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Cookie consent ---------- */
+  (function () {
+    var KEY = 'ssk_cookie_choice';
+    var banner = document.getElementById('cookieBanner');
+
+    function store(value) {
+      try { localStorage.setItem(KEY, value); } catch (e) {}
+    }
+    function read() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+
+    if (!read()) {
+      banner.classList.add('is-visible');
+    }
+
+    document.getElementById('cookieAccept').addEventListener('click', function () {
+      store('accepted');
+      banner.classList.remove('is-visible');
+      /* Google Consent Mode v2 — switch to granted once accepted */
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
+        });
+      }
+    });
+
+    document.getElementById('cookieDecline').addEventListener('click', function () {
+      store('declined');
+      banner.classList.remove('is-visible');
+    });
+  })();
+</script>
+
+<!-- ============ STRUCTURED DATA ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Silver Spoon Kitchen",
+  "url": "https://www.yourdomain.com/",
+  "description": "Tested recipes for older home cooks and the families who cook for them. Plain language, one- or two-person portions, full nutrition information.",
+  "inLanguage": "en-US",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Silver Spoon Kitchen",
+    "url": "https://www.yourdomain.com/"
+  }
+}
+</script>
+
+</body>
+</html>
